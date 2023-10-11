@@ -1,15 +1,9 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+// index.js
+const dotenv = require('dotenv');
+const DatabaseConnector = require('./databaseConnector');
 
-const app = express();
-const port = 3000;
+dotenv.config(); // Load environment variables from .env file
 
-app.use(bodyParser.json());
+const dbConnection = new DatabaseConnector().getConnection();
 
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
-});
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+// Use dbConnection for database operations
